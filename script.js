@@ -19,7 +19,8 @@ searchBtn.addEventListener('click', () => {
 // Fetch weather data
 async function getWeather(city) {
   try {
-    weatherResult.innerHTML = "Loading weather...";
+    weatherResult.innerHTML = `<p class="loading">Loading weather...</p>`;
+
     stockResult.innerHTML = "";
 
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`;
@@ -35,13 +36,33 @@ async function getWeather(city) {
     const country = data.sys.country;
     const temperature = data.main.temp;
     const weatherDescription = data.weather[0].description;
+    // Remove previous background classes
+document.body.classList.remove('sunny', 'rainy', 'cloudy', 'snowy');
+
+// Set background based on weather condition
+const weatherMain = data.weather[0].main.toLowerCase();
+
+if (weatherMain.includes('clear')) {
+  document.body.classList.add('sunny');
+} else if (weatherMain.includes('rain') || weatherMain.includes('drizzle') || weatherMain.includes('thunderstorm')) {
+  document.body.classList.add('rainy');
+} else if (weatherMain.includes('cloud')) {
+  document.body.classList.add('cloudy');
+} else if (weatherMain.includes('snow')) {
+  document.body.classList.add('snowy');
+}
+
+    const iconCode = data.weather[0].icon;
+    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
     weatherResult.innerHTML = `
-      <h3>Weather in ${city}</h3>
-      <p>Temperature: ${temperature}°C</p>
-      <p>Condition: ${weatherDescription}</p>
-      <p>Country: ${country}</p>
-    `;
+        <h3>Weather in ${city}</h3>
+        <img src="${iconUrl}" alt="Weather icon">
+        <p>Temperature: ${temperature}°C</p>
+        <p>Condition: ${weatherDescription}</p>
+        <p>Country: ${country}</p>
+        `;
+
 
     // Fetch stock data after weather
     getStock(country);
@@ -55,7 +76,8 @@ async function getWeather(city) {
 // Fetch stock data
 async function getStock(countryCode) {
   try {
-    stockResult.innerHTML = "Loading stock info...";
+    stockResult.innerHTML = `<p class="loading">Loading stock info...</p>`;
+
 
     // Mapping country codes to stock indices (simple version)
     const countryToStock = {
