@@ -64,7 +64,7 @@ async function getStock(countryCode) {
       "GB": "HSBA.L", // HSBC (UK)
       "IN": "INFY",   // Infosys (India)
       "DE": "BMW.DE", // BMW (Germany)
-      "FR": "AIR.PA"  // Airbus (France)
+      "FR": "AIRBUS"  // Airbus (France)
       // You can add more mappings!
     };
 
