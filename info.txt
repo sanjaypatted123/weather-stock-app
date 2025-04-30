@@ -16,7 +16,7 @@ Error handling: Basic checks for failed fetches and missing data.
 Country-to-stock mapping: Uses a hardcoded map to associate countries with representative stock symbols.
 
 
-Great! Let's break this down in depth, looking at what this line of code does, why it's written that way, and how it's used in your app:
+
 
 📌 What it is:
 
@@ -53,7 +53,7 @@ Example:
 const stockUrl = `https://finnhub.io/api/v1/quote?symbol=${stockSymbol}&token=${STOCK_API_KEY}`;
 This line builds the URL to fetch Apple stock info, if the country is the US.
 
-📈 Stock Symbols Explained:
+
 Stock symbols vary by country and exchange:
 
 "AAPL" – Apple Inc. on NASDAQ (USA)
@@ -154,7 +154,7 @@ Would you like a sample JSON response from OpenWeatherMap to see where all this 
 
 
 
-ChatGPT said:
+
 Here’s a sample JSON response from the OpenWeatherMap API when you request weather data for a valid city like London:
 
 
