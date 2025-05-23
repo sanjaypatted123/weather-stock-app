@@ -1,5 +1,8 @@
 
-https://roadmap.sh/projects/weather-api-wrapper-service
+
+
+[Click here to view the project](https://sanjaypatted123.github.io/weather-stock-app/)
+
 # weather-stock-app
 
 #image of webpage
